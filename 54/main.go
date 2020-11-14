@@ -74,3 +74,33 @@ func main() {
 	res[2] = []int{9, 10, 11, 12}
 	fmt.Println(spiralOrder(res))
 }
+
+// 剑指 Offer 54. 二叉搜索树的第k大节点
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+func kthLargest(root *TreeNode, k int) int {
+	var i = 0
+	val := searchNone(root, &i, k)
+	return val.Val
+}
+
+func searchNone(root *TreeNode, i *int, k int) *TreeNode {
+	if root == nil {
+		return nil
+	}
+	var val1,val2 *TreeNode
+	val1 = searchNone(root.Right, i, k)
+	*i += 1
+	if *i == k {
+		return root
+	}
+	val2 = searchNone(root.Left, i, k)
+	if val1 != nil{
+		return val1
+	}
+	return val2
+}

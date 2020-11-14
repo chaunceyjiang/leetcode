@@ -24,3 +24,15 @@ func max(a, b int) int {
 func main() {
 	fmt.Println(maxSubArray([]int{-2, 1, -3, 4, -1, 2, 1, -5, 4}))
 }
+
+// 剑指 Offer 53
+func missingNumber(nums []int) int {
+
+	n := len(nums)
+	for i := 0; i < n; i++ {
+		if i != nums[i] {
+			return i
+		}
+	}
+	return n
+}
