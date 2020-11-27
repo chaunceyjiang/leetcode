@@ -14,6 +14,9 @@ import "fmt"
 //}
 
 func QuickSort(left,right int,nums []int) {
+	if left>=right{
+		return
+	}
 	i, j := left, right
 	t:=nums[left]
 	for i < j {
